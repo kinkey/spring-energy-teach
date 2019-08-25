@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <context:annotation-config/>
+
+    <bean id="solar" class="energy.SolarEnergy">
+        <constructor-arg value="1"></constructor-arg>
+    </bean>
+
+    <bean id="nuclear" class="energy.NuclearEnergy">
+        <property name="energyLevel" value="1"></property>
+    </bean>
+
+    <bean id="bec" class="energy.Bec" > <!--scope="prototype"-->
+        <constructor-arg ref="nuclear"></constructor-arg>
+    </bean>
+</beans>
